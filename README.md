@@ -1,6 +1,6 @@
-# JWT built with Rails API
+# Company Goals API
 
-> A backend API built to store and dispatch data to the frontend UI
+>  As a backend engineer for a team which is building Alignment of OKRs. The team has a design ready and the frontend engineers are ready to write code. They are expecting you to give APIs so that they can write code
 
 ## Features
 
