@@ -1,8 +1,7 @@
 class Goal < ApplicationRecord
-  belongs_to :parent, class: Goal
-  has_many :children, class: Goal, foreign_key: :parent_id
-  has_many :grandchildren, class: Goal, through: :children, source: :children
+  has_one :parent
+  has_many :children, class_name: 'Goal', foreign_key: :parent_id
 
-  validates :title, presence: true,
-  validates :progress, presence: true,
+  validates :title, presence: true
+  validates :progress, presence: true
 end
