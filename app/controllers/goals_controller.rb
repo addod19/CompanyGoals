@@ -5,11 +5,13 @@ class GoalsController < ApplicationController
   end
 
   def show
-    if @set_goal
-      render json: @set_goal
-    else
-      render json: @set_goal.errors.full_messages
-    end
+    goal = Goal.find(params[:id])
+    render json: goal.children, status: 200
+    # if @set_goal
+    #   render json: @set_goal
+    # else
+    #   render json: @set_goal.errors.full_messages
+    # end
   end
 
   def update
