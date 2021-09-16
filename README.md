@@ -4,8 +4,10 @@
 
 ## Features
 
-1. User can keep track of the amount of water consumption in a day
-2. User can identify if water intake is less or more than target
+1. CEO can create a goal 
+2. Team members break down the goal
+3. The VP Sales who reports to the CEO will write a goal "Get 1000 demoes by Q1"
+4. Sales Director of (say East zone) who reports to the will break his manager (VP Sales Goal) and write a goal "Get 200 demoes from East Zone by Q1
 
 
 ## Future Feature (v1.12)
