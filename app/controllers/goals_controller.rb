@@ -1,5 +1,4 @@
 class GoalsController < ApplicationController
-
   def index
     @goals = Goal.all
   end
@@ -15,7 +14,6 @@ class GoalsController < ApplicationController
     else
       render json: @set_goal.errors.full_messages, status: 401
     end
-
   end
 
   private
@@ -27,5 +25,4 @@ class GoalsController < ApplicationController
   def set_goal
     @set_goal ||= Goal.find(params[:id])
   end
-
 end
