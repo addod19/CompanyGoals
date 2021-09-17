@@ -50,7 +50,11 @@ To get a local copy up and running follow these simple example steps.
 - After clicking `send` we either expect a success or failure message, in our case `success` message as seen below: We expect a `json` response in the format. Here is what I have currently without the parent/company goals. But it will be fixed
 ```
 [
-    {
+    "id": 1,
+    "title": "Close 1$mn revenuer by Q1",
+    "progress": 0,
+    "children": [
+        {
         "id": 2,
         "title": "Get 1000 demoes by Q1",
         "progress": 0,
@@ -87,6 +91,7 @@ To get a local copy up and running follow these simple example steps.
         "updated_at": "2021-09-16T12:04:46.469Z",
         "parent_id": 1
     }
+    ] 
 ]
 ```
 - To Update a Goal
