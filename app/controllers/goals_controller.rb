@@ -20,8 +20,12 @@ class GoalsController < ApplicationController
   end
 
   def update
-    @goal_updated = Goal.update_parent
-    p @goal_updated
+    return if self.parent.nil?
+
+    parent_record = Goal.find_by(goal_id: self.parent.id)
+    parent_children_records = parent_record.children.count
+    updated_parent_progress = self.progress / parent_children_count
+    @goal_updated = parent_record.update(progress: updated_parent_progress)
     if @goal_updated
       render json: { goal: @goal_updated }
     else
