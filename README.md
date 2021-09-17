@@ -13,7 +13,7 @@
 ## Future Feature (v1.12)
 
 1. Add more controller actions like create, destroy, etc
-2. Add more data like weight for accurate results
+2. Add more test
 
 
 
