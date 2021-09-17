@@ -6,7 +6,7 @@ class GoalsController < ApplicationController
 
   def show
     goal = Goal.find(params[:id])
-    render json: goal.children, status: 200
+    render json: goal, status: 200
   end
 
   def create
