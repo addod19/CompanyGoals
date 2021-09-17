@@ -21,9 +21,8 @@ class GoalsController < ApplicationController
 
   def update
     @goal_id = Goal.find(params[:id])
-    p @goal_id
     if @goal_id.update!(goal_params)
-      render json: { status: :created, goal: @goal_id }
+      render json: { goal: @goal_id }
     else
       render json: @goal_id.errors.full_messages, status: 401
     end
@@ -32,7 +31,7 @@ class GoalsController < ApplicationController
   private
 
   def goal_params
-    params.permit(:id, :title, :progress)
+    params.require(:goal).permit(:id, :title, :progress)
   end
 
   def set_goal
