@@ -6,11 +6,11 @@ class Goal < ApplicationRecord
   validates :progress, presence: true
 
   def updated_parent
-    return if self.parent.nil?
+    return if parent.nil?
 
-    parent_record = Goal.find_by(id: self.parent_id)
+    parent_record = Goal.find_by(id: parent_id)
     parent_children_records = parent_record.children.count
-    updated_parent_progress = self.progress / parent_children_records
+    updated_parent_progress = progress / parent_children_records
     parent_record.update(progress: updated_parent_progress)
   end
 end
