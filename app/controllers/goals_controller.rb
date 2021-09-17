@@ -20,9 +20,9 @@ class GoalsController < ApplicationController
   end
 
   def update
-    @goal = Goal.find(params[:id])
-    if @goal.update(goal_params)
-      render json: { goal: @goal, status: 'OK' }, status: :ok
+    goal = Goal.find(params[:id])
+    if goal.update(goal_params)
+      render json: { goal: goal, status: 'OK' }, status: :ok
     else
       render json: { error: 'Cannot update goal' }, status: :unprocessable_entity
     end
