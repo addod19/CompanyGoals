@@ -102,6 +102,58 @@ To get a local copy up and running follow these simple example steps.
   - Navigate to the params of postman, fill in the key value pairs, `{progress: 100}`
   - If we get a `200` or `201` status code, goal added successful otherwise `401` or `404` for failure
 
+- To check for the recursive goal alignment
+  - copy this link in postman `http://localhost:3000/goals/1` using the `GET` method
+  ```
+  {
+    "id": 1,
+    "title": "Close 1$mn revenuer by Q1",
+    "progress": 25,
+    "children": [
+        {
+            "id": 5,
+            "title": "Get 1 Lakh visitors in our website by Q1",
+            "progress": 0,
+            "children": [],
+            "created_at": "2021-09-16T12:04:46.469Z",
+            "updated_at": "2021-09-17T10:15:48.657Z",
+            "parent_id": 1
+        },
+        {
+            "id": 2,
+            "title": "Get 1000 demoesr by Q1",
+            "progress": 50,
+            "children": [
+                {
+                    "id": 4,
+                    "title": "Get 700 demoes from West Zone",
+                    "progress": 0,
+                    "children": [],
+                    "created_at": "2021-09-16T12:03:38.225Z",
+                    "updated_at": "2021-09-16T12:03:38.225Z",
+                    "parent_id": 2
+                },
+                {
+                    "id": 3,
+                    "title": "Get 200 demoes from East Zone by Q1",
+                    "progress": 100,
+                    "children": [],
+                    "created_at": "2021-09-16T12:03:08.186Z",
+                    "updated_at": "2021-09-17T13:15:20.128Z",
+                    "parent_id": 2
+                }
+            ],
+            "created_at": "2021-09-16T11:55:26.914Z",
+            "updated_at": "2021-09-17T13:15:20.175Z",
+            "parent_id": 1
+        }
+    ],
+    "created_at": "2021-09-16T11:30:03.944Z",
+    "updated_at": "2021-09-17T13:15:20.196Z",
+    "parent_id": null
+}
+  
+  ```
 ## RSpec Test
 
 - run `rspec`
