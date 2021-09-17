@@ -1,26 +1,31 @@
 class GoalsController < ApplicationController
-
   def index
     @goals = Goal.all
+    render json: @goals, status: :created
   end
 
   def show
     goal = Goal.find(params[:id])
-    render json: goal.children, status: 200
-    # if @set_goal
-    #   render json: @set_goal
-    # else
-    #   render json: @set_goal.errors.full_messages
-    # end
+    render json: goal, status: 200
+  end
+
+  def create
+    @goal = Goal.new(goal_params)
+    @goal.save
+    if @goal
+      render json: @goal, status: :created
+    else
+      render json: { status: :unprocessible_entity, error: @goal.errors.full_messages }
+    end
   end
 
   def update
-    if @set_goal.update(goals_params)
-      render json: { status: :created, goal: @set_goal }
+    goal = Goal.find(params[:id])
+    if goal.update(goal_params)
+      render json: { goal: goal, status: 'OK' }, status: :ok
     else
-      render json: @set_goal.errors.full_messages, status: 401
+      render json: { error: 'Cannot update goal' }, status: :unprocessable_entity
     end
-
   end
 
   private
@@ -32,5 +37,4 @@ class GoalsController < ApplicationController
   def set_goal
     @set_goal ||= Goal.find(params[:id])
   end
-
 end
