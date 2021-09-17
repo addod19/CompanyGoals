@@ -20,23 +20,12 @@ class GoalsController < ApplicationController
   end
 
   def update
-    return if self.parent.nil?
-
-    parent_record = Goal.find_by(goal_id: self.parent.id)
-    parent_children_records = parent_record.children.count
-    updated_parent_progress = self.progress / parent_children_count
-    @goal_updated = parent_record.update(progress: updated_parent_progress)
-    if @goal_updated
-      render json: { goal: @goal_updated }
+    goal = Goal.find(params[:id])
+    if goal.update(goal_params)
+      render json: { status: 'OK' }, status: :ok
     else
-      render json: { error: @goal_updated.errors.full_messages }
+      render json: { error: 'Cannot update goal' }, status: :unprocessable_entity
     end
-    # @goal_id = Goal.find(params[:id])
-    # if @goal_id.update!(goal_params)
-    #   render json: { goal: @goal_id }
-    # else
-    #   render json: @goal_id.errors.full_messages, status: 401
-    # end
   end
 
   private
