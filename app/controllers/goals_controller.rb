@@ -20,12 +20,19 @@ class GoalsController < ApplicationController
   end
 
   def update
-    @goal_id = Goal.find(params[:id])
-    if @goal_id.update!(goal_params)
-      render json: { goal: @goal_id }
+    @goal_updated = Goal.update_parent
+    p @goal_updated
+    if @goal_updated
+      render json: { goal: @goal_updated }
     else
-      render json: @goal_id.errors.full_messages, status: 401
+      render json: { error: @goal_updated.errors.full_messages }
     end
+    # @goal_id = Goal.find(params[:id])
+    # if @goal_id.update!(goal_params)
+    #   render json: { goal: @goal_id }
+    # else
+    #   render json: @goal_id.errors.full_messages, status: 401
+    # end
   end
 
   private

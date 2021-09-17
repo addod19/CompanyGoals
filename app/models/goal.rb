@@ -4,7 +4,7 @@ class Goal < ApplicationRecord
   validates :title, presence: true
   validates :progress, presence: true
 
-  def update_parent
+  def self.update_parent
     return if self.parent.nil?
     parent_record = Goal.find_by(id: self.parent.id)
     parent_children_records = parent_record.children.count
