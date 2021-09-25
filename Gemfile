@@ -17,7 +17,7 @@ gem 'puma', '~> 4.1'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'hirb'
 gem 'rubocop', '>= 1.0', '< 2.0'
-
+gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
