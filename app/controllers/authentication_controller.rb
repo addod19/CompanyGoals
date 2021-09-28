@@ -1,5 +1,5 @@
 class AuthenticationController < ApplicationController
-  skip_before_action :authenticate_request
+  skip_before_action :authenticate_api_request
 
   def authenticate
     user = User.find_by(email: params[:email])

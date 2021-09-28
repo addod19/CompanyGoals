@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_request
+  skip_before_action :authenticate_api_request, :raise => false
 
   def create
     @user = User.create!(user_params)
@@ -9,8 +9,7 @@ class UsersController < ApplicationController
         email: @user.email,
         first_name: @user.first_name,
         last_name: @user.last_name,
-        phone_number: @user.phone_number,
-        bio: @user.bio
+        phone_number: @user.phone_number
       }, auth_token: auth_token }
     else
       render json: {
